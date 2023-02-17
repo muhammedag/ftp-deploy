@@ -17,7 +17,6 @@ echo "INPUT_NET_PERSIST_RETRIES : ${INPUT_NET_PERSIST_RETRIES}"
 echo "INPUT_NET_TIMEOUT : ${INPUT_NET_TIMEOUT}"
 echo "INPUT_DNS_MAX_RETRIES : ${INPUT_DNS_MAX_RETRIES}"
 echo "INPUT_DNS_FATAL_TIMEOUT : ${INPUT_DNS_FATAL_TIMEOUT}"
-#echo "INPUT_IGNORE_PATH : ${INPUT_IGNORE_PATH}"
 echo ""
 echo "=== Current location ==="
 pwd
@@ -35,7 +34,7 @@ FTP_SETTINGS="${FTP_SETTINGS} set net:timeout ${INPUT_NET_TIMEOUT};"
 FTP_SETTINGS="${FTP_SETTINGS} set dns:max-retries ${INPUT_DNS_MAX_RETRIES};"
 FTP_SETTINGS="${FTP_SETTINGS} set dns:fatal-timeout ${INPUT_DNS_FATAL_TIMEOUT};"
 
-MIRROR_COMMAND="mirror --continue --reverse"
+MIRROR_COMMAND="mirror --continue --reverse --exclude vendor/"
 
 if [ -z "${INPUT_MAX_RETRIES}" ]; then
   INPUT_MAX_RETRIES="10"
@@ -63,12 +62,6 @@ fi
 
 if [ "${INPUT_DELETE}" = "true" ]; then
   MIRROR_COMMAND="${MIRROR_COMMAND} --delete"
-fi
-
-if [ "${INPUT_IGNORE_PATH}" ]; then
-  for path in ${INPUT_IGNORE_PATH[@]}; do
-    MIRROR_COMMAND = "--exclude $path"
-  done
 fi
 
 echo "=== Directories ==="
