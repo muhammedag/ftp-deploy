@@ -17,6 +17,7 @@ echo "INPUT_NET_PERSIST_RETRIES : ${INPUT_NET_PERSIST_RETRIES}"
 echo "INPUT_NET_TIMEOUT : ${INPUT_NET_TIMEOUT}"
 echo "INPUT_DNS_MAX_RETRIES : ${INPUT_DNS_MAX_RETRIES}"
 echo "INPUT_DNS_FATAL_TIMEOUT : ${INPUT_DNS_FATAL_TIMEOUT}"
+echo "INPUT_IGNORE_PATH : ${INPUT_IGNORE_PATH}"
 echo ""
 echo "=== Current location ==="
 pwd
@@ -62,6 +63,12 @@ fi
 
 if [ "${INPUT_DELETE}" = "true" ]; then
   MIRROR_COMMAND="${MIRROR_COMMAND} --delete"
+fi
+
+if [ "${INPUT_IGNORE_PATH}" ]; then
+  for path in ${INPUT_IGNORE_PATH[@]}; do
+    MIRROR_COMMAND = "--exclude $path"
+  done
 fi
 
 echo "=== Directories ==="
