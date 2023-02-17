@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh -e
 
 echo "=== Environment variables ==="
 echo "INPUT_SERVER: ${INPUT_SERVER}"
