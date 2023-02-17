@@ -34,7 +34,7 @@ FTP_SETTINGS="${FTP_SETTINGS} set net:timeout ${INPUT_NET_TIMEOUT};"
 FTP_SETTINGS="${FTP_SETTINGS} set dns:max-retries ${INPUT_DNS_MAX_RETRIES};"
 FTP_SETTINGS="${FTP_SETTINGS} set dns:fatal-timeout ${INPUT_DNS_FATAL_TIMEOUT};"
 
-MIRROR_COMMAND="mirror --continue --reverse --exclude /vendorx"
+MIRROR_COMMAND="mirror --continue --reverse --exclude /vendor"
 
 if [ -z "${INPUT_MAX_RETRIES}" ]; then
   INPUT_MAX_RETRIES="10"
